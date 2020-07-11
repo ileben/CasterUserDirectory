@@ -1,0 +1,37 @@
+[file]
+"caster alias file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\data\\sm_aliases.toml"
+"caster bring me file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\settings\\sm_bringme.toml"
+"caster chain aliases file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\data\\sm_chain_aliases.toml"
+"caster clipboard file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\data\\clipboard.json"
+"caster companion file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\settings\\companion_config.toml"
+"caster hooks file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\settings\\hooks.toml"
+"caster log file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\log.txt"
+"caster record from history file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\data\\sm_history.toml"
+"caster rules file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\settings\\rules.toml"
+"caster settings file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\settings\\settings.toml"
+"caster transformer file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\transformers\\words.txt"
+"caster transformers file" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\settings\\transformers.toml"
+
+[folder]
+"caster data" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\data"
+"caster hooks" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\hooks"
+"caster rules" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\rules"
+"caster settings" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\settings"
+"caster source" = "D:\\MobileDevelopment\\third_party\\Caster-ileben-kaldi"
+"caster transformers" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\transformers"
+"caster user" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi"
+"libraries | home" = "C:\\Users\\ILeben"
+"my documents" = "C:\\Users\\ILeben\\Documents"
+"my pictures" = "C:\\Users\\ILeben\\Pictures"
+"sick you lee" = "C:\\Users\\ILeben\\AppData\\Local\\caster-kaldi\\sikuli"
+
+[program]
+notepad = "C:\\Windows\\notepad.exe"
+
+[website]
+"caster discord" = "https://discord.gg/9eAAsCJ"
+"caster documentation" = "https://caster.readthedocs.io/en/latest/"
+"caster gitter" = "https://gitter.im/dictation-toolbox/Caster"
+"dragonfly documentation" = "https://dragonfly2.readthedocs.io/en/latest/"
+"dragonfly gitter" = "https://gitter.im/dictation-toolbox/dragonfly"
+google = "https://www.google.com"
