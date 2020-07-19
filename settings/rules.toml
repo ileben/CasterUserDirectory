@@ -1,4 +1,4 @@
-_enabled_ordered = ["GrammarActivatorRule", "HooksActivationRule", "Programming", "CustomNavigation", "DragonSink", "CustomNavigationGlobal"]
+_enabled_ordered = ["GrammarActivatorRule", "HooksActivationRule", "DragonSink", "CustomNavigationGlobal", "CustomMouse", "CustomExplorer", "CustomNavigation", "CustomNotepad", "CustomProgramming", "CustomCPP", "CustomVisualStudio"]
 _internal = ["GrammarActivatorRule", "HooksActivationRule", "TransformersActivationRule", "ManualGrammarReloadRule"]
 
 [whitelisted]
@@ -15,8 +15,15 @@ CSharp = false
 CasterRule = false
 ChainAlias = false
 ChromeRule = false
+CustomCPP = true
+CustomExplorer = true
+CustomMouse = true
 CustomNavigation = true
 CustomNavigationGlobal = true
+CustomNotepad = true
+CustomProgramming = true
+CustomPython = true
+CustomVisualStudio = true
 Dart = false
 DouglasGridRule = false
 DragonRule = false
@@ -65,7 +72,6 @@ Navigation = false
 NavigationNon = false
 Numbers = false
 OutlookRule = false
-Programming = true
 Prolog = false
 PrologNon = false
 Punctuation = false

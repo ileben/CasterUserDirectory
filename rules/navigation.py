@@ -1,4 +1,5 @@
 from imports import *
+from castervoice.lib import utilities
 
 direction_dict = {
     "duck|doc|dog": "down",
@@ -12,17 +13,26 @@ class CustomNavigation(MappingRule):
     mapping = {
         "Wendy|windy":
             R(Key("ca-tab")),
+             
         "altar|alter [<nn10>]":
             R(Key("alt:down, tab/20:%(nn10)d, alt:up"), rdescript="Core: switch to most recent Windows"),
         "nexy [<nn50>]":
             R(Key("c-pgdown"))*Repeat(extra="nn50"),
         "proxy [<nn50>]":
             R(Key("c-pgup"))*Repeat(extra="nn50"),
+        "new tab":
+            R(Key("c-t")),
         "close tab [<nn50>]":
             R(Key("c-w/20"))*Repeat(extra="nn50"),
         "close window":
             R(Key("a-f4")),
+        'maximize':
+            R(Function(utilities.maximize_window)),
+        'minimize':
+            R(Function(utilities.minimize_window)),
             
+        "refresh|reload":
+            R(Key("f5")),
         "context menu":
             R(Key("s-f10")),
             
@@ -50,4 +60,5 @@ class CustomNavigation(MappingRule):
     }
     
 def get_rule():
-    return CustomNavigation, RuleDetails(name="CustomNavigation", grammar_name="CustomNavigation")
+    #return CustomNavigation, RuleDetails(name="CustomNavigation", grammar_name="CustomNavigation")
+    return CustomNavigation, RuleDetails(name="CustomNavigation")

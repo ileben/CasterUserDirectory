@@ -62,6 +62,10 @@ class CustomNavigationGlobal(MergeRule):
             R(Key("c-x"), rspec="copy"),
         "paste":
             R(Key("c-v"), rspec="paste"),
+        "(undo|negate) [<nn10>]":
+            R(Key("c-z"))*Repeat(extra="nn10"),
+        "redo [<nn10>]":
+            R(Key("cs-z"))*Repeat(extra="nn10"),
             
         "copy line":
             R(Key("end, s-home/5, c-c/5")),

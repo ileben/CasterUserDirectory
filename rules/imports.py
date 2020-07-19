@@ -1,4 +1,4 @@
-from dragonfly import MappingRule, CompoundRule, Dictation, Choice, Repetition, RuleRef, Key, Function, ActionBase, Repeat
+from dragonfly import MappingRule, CompoundRule, Dictation, Choice, Repetition, RuleRef, Key, Mouse, Function, ActionBase, Repeat, Mimic, Pause
 from castervoice.lib.merge.state.short import S, L, R
 from castervoice.lib.actions import Text
 from castervoice.lib.merge.mergerule import MergeRule

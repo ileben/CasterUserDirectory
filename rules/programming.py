@@ -1,5 +1,50 @@
 from imports import *
 
+class SymbolSpecs(object):
+    IF = "iffae"
+    ELSE = "shells"
+
+    SWITCH = "switch"
+    CASE = "case of"
+    BREAK = "breaker"
+    DEFAULT = "default"
+
+    DO_LOOP = "do loop"
+    WHILE_LOOP = "while loop"
+    FOR_LOOP = "for loop"
+    FOR_EACH_LOOP = "for each"
+
+    TO_INTEGER = "convert to integer"
+    TO_FLOAT = "convert to floating point"
+    TO_STRING = "convert to string"
+
+    AND = "lodge and"
+    OR = "lodge or"
+    NOT = "lodge not"
+
+    SYSOUT = "print to console"
+
+    IMPORT = "import"
+
+    FUNCTION = "function"
+    CLASS = "class"
+
+    COMMENT = "add comment"
+    LONG_COMMENT = "long comment"
+    COMMENT_OUT = "comment out"
+    REMOVE_COMMENT = "remove comment"
+
+    NULL = "value not"
+
+    RETURN = "return"
+
+    TRUE = "value true"
+    FALSE = "value false"
+
+    # not part of the programming standard:
+    CANCEL = "(terminate | escape | exit | cancel)"
+    
+    
 alphabet_dict = {
             "alfa"   : "a",
             "ulfa"   : "a",
@@ -89,7 +134,7 @@ punctuation_dict = {
 }
 
 class Punctuation(MappingRule):
-    export = False
+    exported = False
     
     mapping = {
         "[<long>] <punctuation> [<npunc>]":
@@ -201,7 +246,7 @@ class ProgrammingOptions(RecursiveRule):
         RuleRef(Punctuation(), name="Punctuation")
     ]
     
-class Programming(MappingRule):
+class CustomProgramming(MappingRule):
     
     mapping = {
         "<ProgrammingOptions>": ActionBase()
@@ -236,4 +281,4 @@ class JustDictation(MappingRule):
 
 def get_rule():
     #return JustDictation, RuleDetails(name="JustDictation")
-    return Programming, RuleDetails(name="CustomProgramming")
+    return CustomProgramming, RuleDetails(name="CustomProgramming")
