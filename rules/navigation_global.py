@@ -95,6 +95,9 @@ class CustomNavigationGlobal(MergeRule):
         "nuke empty below [<nn50>]":
             R(Key("end, down, s-home/5, backspace, backspace, home"))*Repeat(extra="nn50"),
         
+        "duple [<nn50>]":
+            R(Key("end, s-home, c-c, end") + 
+                Key("enter, c-v")*Repeat(extra="nn50"), rspec="duple"),
     }
     extras = [
         IntegerRefST("nn10", 1, 11),

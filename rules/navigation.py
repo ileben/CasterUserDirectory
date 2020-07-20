@@ -20,9 +20,9 @@ class CustomNavigation(MappingRule):
             R(Key("c-pgdown"))*Repeat(extra="nn50"),
         "proxy [<nn50>]":
             R(Key("c-pgup"))*Repeat(extra="nn50"),
-        "new tab":
+        "new (tab|tabby)":
             R(Key("c-t")),
-        "close tab [<nn50>]":
+        "close (tab|tabby) [<nn50>]":
             R(Key("c-w/20"))*Repeat(extra="nn50"),
         "close window":
             R(Key("a-f4")),
@@ -48,6 +48,9 @@ class CustomNavigation(MappingRule):
             R(Key("cs-f")),
         "replace":
             R(Key("c-h")),
+            
+        "select all":
+            R(Key("c-a")),
     }
     extras = [
         IntegerRefST("nn10", 1, 11),

@@ -152,7 +152,7 @@ class TextFormatting(MappingRule):
     exported = False
 
     mapping = {
-        "<format> <text>":
+        "<format> <text> [stop]":
             R(Function(format_text, extra={"text"})),
         #"<format>":
             #R(Text("Formatting")),
