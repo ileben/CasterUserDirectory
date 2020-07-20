@@ -1,4 +1,6 @@
 from imports import *
+import context
+import lex
 
 direction_dict = {
     "duck|doc|dog": "down",
