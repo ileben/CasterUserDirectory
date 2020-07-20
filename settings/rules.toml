@@ -1,4 +1,4 @@
-_enabled_ordered = ["GrammarActivatorRule", "HooksActivationRule", "DragonSink", "CustomNavigationGlobal", "CustomMouse", "CustomExplorer", "CustomNavigation", "CustomNotepad", "CustomProgramming", "CustomCPP", "CustomVisualStudio"]
+_enabled_ordered = ["GrammarActivatorRule", "HooksActivationRule", "DragonSink", "CustomNavigationGlobal", "CustomMouse", "CustomExplorer", "CustomNavigation", "CustomNotepad", "CustomProgramming", "CustomVisualStudio", "CustomPython", "CustomChrome", "CustomPunctuation", "CustomNumbers"]
 _internal = ["GrammarActivatorRule", "HooksActivationRule", "TransformersActivationRule", "ManualGrammarReloadRule"]
 
 [whitelisted]
@@ -16,12 +16,15 @@ CasterRule = false
 ChainAlias = false
 ChromeRule = false
 CustomCPP = true
+CustomChrome = true
 CustomExplorer = true
 CustomMouse = true
 CustomNavigation = true
 CustomNavigationGlobal = true
 CustomNotepad = true
+CustomNumbers = true
 CustomProgramming = true
+CustomPunctuation = true
 CustomPython = true
 CustomVisualStudio = true
 Dart = false

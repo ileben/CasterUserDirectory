@@ -3,14 +3,14 @@ from imports import *
 class CustomNotepad(MappingRule):
 
     mapping = {
-        "preview in browser":
-            R(Key("cas-r")),
+        "show in explorer":
+            R(Key("cas-e")),
 
         "open":
             R(Key("c-o")),
         "go [to] line <n>":
             R(Key("c-g/10") + Text("%(n)s") + Key("enter")),
-        "new tab":
+        "new (tab|tabby)":
             R(Key("c-n")),
     }
     extras = [

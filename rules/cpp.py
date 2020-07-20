@@ -131,7 +131,7 @@ class CustomCPP(MergeRule):
     extras = [
         IntegerRefST("nnavi50", 1, 50),
     ]
-    defaults = {}
+    defaults = {"nnavi50": 1}
 
 
 def get_rule():

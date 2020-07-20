@@ -1,4 +1,5 @@
 from imports import *
+from punctuation import CustomPunctuation
 
 class SymbolSpecs(object):
     IF = "iffae"
@@ -77,88 +78,8 @@ alphabet_dict = {
             "Zulu"    : "z",
         }
         
-double_punctuation_dict = {
-    "quotes":                              "\"\"",
-    "thin quotes":                         "''",
-    #"tickris":                             "``",
-    #"prekris":                             "()",
-    "parens":                               "()",
-    "brax":                                "[]",
-    "curly":                               "{}",
-    "angle":                               "<>",
-}
 
-inv_dp = {v: k for k, v in double_punctuation_dict.iteritems()}
-
-punctuation_dict = {
-    "space":                                              " ",
-    "period":                                             ".",
-    "comma":                                              ",",
-    "bam":                                                ". ",
-    "boom":                                               ", ",
-    "questo":                                             "?",
-    "clamor":                                             "!",
-    "deckle":                                             ":",
-    "semper":                                             ";",
-    "underscore":                                         "_",
-    "apostrophe":                                         "'",
-    "ticky":                                              "`",
-    "starling":                                           "*",
-    "plus":                                               "+",
-    "minus":                                              "-",
-    "slash":                                              "/",
-    "backslash":                                          "\\",
-    "less than | open " + inv_dp["<>"]:                   "<",
-    "less [than] [or] equal [to]":                        "<=",
-    "greater than | close " + inv_dp["<>"]:               ">",
-    "greater [than] [or] equal [to]":                     ">=",
-    "equals":                                             "=",
-    "equal to":                                           "==",
-    "not equal to":                                       "!=",
-    "hashy":                                              "#",
-    "Dolly":                                              "$",
-    "modulo":                                             "%",
-    "ampersand":                                          "&",
-    "pipe":                                               "|",
-    "tilde":                                              "~",
-    "carrot":                                             "^",
-    "(atty | at symbol)":                                 "@",
-    "(open|close) " + inv_dp["''"]:                       "'",
-    "(open|close) " + inv_dp['""']:                       '"',
-    "open " + inv_dp["[]"]:                               "[",
-    "close " + inv_dp["[]"]:                              "]",
-    "open " + inv_dp["()"]:                               "(",
-    "close " + inv_dp["()"]:                              ")",
-    "open " + inv_dp["{}"]:                               "{",
-    "close " + inv_dp["{}"]:                              "}",
-}
-
-class Punctuation(MappingRule):
-    exported = False
     
-    mapping = {
-        "[<long>] <punctuation> [<npunc>]":
-            R(Text("%(long)s" + "%(punctuation)s" + "%(long)s"))*Repeat(extra="npunc"),
-        "<double_punctuation> [<npunc>]":
-            R(Text("%(double_punctuation)s") + Key("left"))*Repeat(extra="npunc"),
-    }
-
-    extras = [
-        IntegerRefST("npunc", 0, 10),
-        Choice(
-            "long", {
-                "long": " ",
-            }),
-        Choice(
-            "punctuation", punctuation_dict),
-        Choice(
-            "double_punctuation", double_punctuation_dict)
-    ]
-    defaults = {
-        "npunc": 1,
-        "long": "",
-    }
-        
 def letters2(big, letter):
     if big:
         Key(letter.capitalize()).execute()
@@ -176,9 +97,18 @@ format_dict = {
     "say":   (5, 0)
 }
 
+singing = False
+
 def format_text(format, text):
+    global singing
+    
+    if format[0] == 4 or format[0] == 5:
+        singing = True
+        
     textformat.master_format_text(capitalization=format[0], spacing=format[1], textnv=text)
     
+    if singing:
+        Text(" ").execute()
 
 # By default process_recognition Is only called on the top level rule in the recognition.
 # This rule recursively calls process_recognition on all of the nested rules
@@ -195,7 +125,12 @@ class RecursiveRule(CompoundRule):
         else:
             for child in node.children:
                 self.process_node(child)
-        
+    
+    
+class Punctuation(CustomPunctuation):
+    exported = False
+    
+    
 class Alphabet(MappingRule):
     exported = False
     
@@ -256,13 +191,15 @@ class CustomProgramming(MappingRule):
     ]
     
     def process_recognition(self, node):
+        global singing
+        singing = False
         self.process_node(node)
         
     def process_node(self, node):
         #print("BLAH_BLAH_BLAH\n")
         if isinstance(node.actor, RuleRef):
             rule = node.children[0].actor
-            print("Found Rule: {} Children: {}\n".format(str(rule), str(node)))
+            #print("Found Rule: {} Children: {}\n".format(str(rule), str(node)))
             rule.process_recognition(node.children[0])
         else:
             for child in node.children:
