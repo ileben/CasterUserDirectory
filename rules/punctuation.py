@@ -39,6 +39,8 @@ punctuation_dict = {
     "equals":                                             "=",
     "equal to":                                           "==",
     "not equal to":                                       "!=",
+    "arrow":                                              "->",
+    "fat arrow":                                          "=>",
     "hashy":                                              "#",
     "Dolly":                                              "$",
     "modulo":                                             "%",
