@@ -1,7 +1,8 @@
 from imports import *
 
 class CustomNotepad(MappingRule):
-
+    weight = 2
+    
     mapping = {
         "show in explorer":
             R(Key("cas-e")),

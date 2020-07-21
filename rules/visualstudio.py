@@ -1,7 +1,8 @@
 from imports import *
 
 class CustomVisualStudio(MappingRule):
-
+    weight = 2
+    
     mapping = {
         "match bracket":
             R(Key("c-]")),
