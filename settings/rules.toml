@@ -1,4 +1,4 @@
-_enabled_ordered = ["GrammarActivatorRule", "HooksActivationRule", "DragonSink", "CustomNavigationGlobal", "CustomMouse", "CustomExplorer", "CustomNavigation", "CustomNotepad", "CustomProgramming", "CustomVisualStudio", "CustomPython", "CustomChrome", "CustomPunctuation", "CustomNumbers"]
+_enabled_ordered = ["GrammarActivatorRule", "HooksActivationRule", "DragonSink", "CustomNavigationGlobal", "CustomMouse", "CustomExplorer", "CustomNavigation", "CustomNotepad", "CustomProgramming", "CustomVisualStudio", "CustomChrome", "CustomPunctuation", "CustomNumbers", "TestRule", "CustomPython", "TortoiseMerge", "TortoiseGitMerge"]
 _internal = ["GrammarActivatorRule", "HooksActivationRule", "TransformersActivationRule", "ManualGrammarReloadRule"]
 
 [whitelisted]
@@ -94,7 +94,10 @@ SpellingWindowRule = false
 SublimeRule = false
 SudokuGridRule = false
 SyncDirsRule = false
+TestRule = true
 TextManipulation = false
+TortoiseGitMerge = true
+TortoiseMerge = true
 TotalCommanderRule = false
 TyporaRule = false
 UnityRule = false

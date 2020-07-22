@@ -12,7 +12,7 @@ class CustomExplorer(MappingRule):
         "new folder":
             R(Key("cs-n")),
         "(folder up | get up) [<n>]":
-            R(Key("a-up/100")*Repeat(extra="n")),
+            R(Key("a-up/10")*Repeat(extra="n")),
             
         "(navigation | nav | left) pane":
             R(Key("a-d, tab:2")),
@@ -44,6 +44,32 @@ class CustomExplorer(MappingRule):
             R(Function(et.current_file_command, extra={"folder"}, command="TortoiseProc.exe /command:remove /path:{}")),
         "subversion [<folder>] rename":
             R(Function(et.current_file_command, extra={"folder"}, command="TortoiseProc.exe /command:rename /path:{}")),
+            
+        "gitter [<folder>] difference":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:diff /path:{}")),
+        "gitter [<folder>] log":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:log /path:{}")),
+        "gitter [<folder>] blame":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:blame /path:{}")),
+        "gitter [<folder>] browser":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:repobrowser /path:{}")),
+        "gitter [<folder>] properties":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:properties /path:{}")),
+        "gitter [<folder>] commit":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:commit /path:{}")),
+        "gitter [<folder>] revert":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:revert /path:{}")),
+        "gitter [<folder>] (pull|pool)":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:pull /path:{}")),
+        "gitter [<folder>] push":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:push /path:{}")),
+        "gitter [<folder>] add":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:add /path:{}")),
+        "gitter [<folder>] delete":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:remove /path:{}")),
+        "gitter [<folder>] rename":
+            R(Function(et.current_file_command, extra={"folder"}, command="TortoiseGitProc.exe /command:rename /path:{}")),
+            
         "console here":
             R(Function(et.current_file_command, folder=True, command="C:\\Program Files\\ConEmu\\ConEmu64.exe -dir \"{}\"")),
     }
