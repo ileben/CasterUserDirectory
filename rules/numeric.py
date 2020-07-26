@@ -1,7 +1,11 @@
 from imports import *
 
-def numbers2(wnKK):
+def numbers2(wnKK, digits):
     Text(str(wnKK)).execute()
+    if not digits is None:
+        Text(".").execute()
+        for d in digits:
+            Text(str(d)).execute()
     
 def digit(digits):
     for d in digits:
@@ -10,7 +14,7 @@ def digit(digits):
 class CustomNumbers(MergeRule):
     
     mapping = {
-        "numb [<multiplier>] <wnKK>":
+        "numb [<multiplier>] <wnKK> [point <digits>]":
             R(Function(numbers2, extra="wnKK"), rspec="Number")*Repeat(extra="multiplier"),
         "digit <digits>":
             R(Function(digit, extra="digits"), rspec="Digit"),

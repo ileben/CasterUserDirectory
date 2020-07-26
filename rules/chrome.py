@@ -3,6 +3,7 @@ from imports import *
 
 class CustomChrome(MappingRule):
     pronunciation = "custom chrome"
+    weight = 2
 
     mapping = {
         "go back [<n>]":
@@ -15,6 +16,12 @@ class CustomChrome(MappingRule):
             R(Key("c-minus/20")) * Repeat(extra="n"),
         "zoom reset [<n>]":
             R(Key("c-0")),
+            
+        "address bar":
+            R(Key("c-l")),
+        "copy address":
+            R(Key("c-l, c-c")),
+            
         #browser.TOGGLE_BOOKMARK_TOOLBAR:
             #R(Key("cs-b")),
         #"switch user":

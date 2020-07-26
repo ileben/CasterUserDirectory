@@ -1,5 +1,6 @@
 from imports import *
 from punctuation import CustomPunctuation
+from numeric import CustomNumbers
 
 class SymbolSpecs(object):
     IF = "iffae"
@@ -93,8 +94,8 @@ format_dict = {
     "title": (2, 1),
     "camel": (3, 1),
     "snake": (5, 3),
-    "sing":  (4, 0),
-    "say":   (5, 0)
+    "sing":  (10, 0),
+    "say":   (11, 0)
 }
 
 singing = False
@@ -102,10 +103,19 @@ singing = False
 def format_text(format, text):
     global singing
     
-    if format[0] == 4 or format[0] == 5:
+    # For sing, say, retain the original formatting except for the first letter
+    # Afterwards append space to all additional formatting within the same utterance
+    style = format[0]
+    if style >= 10:
         singing = True
-        
-    textformat.master_format_text(capitalization=format[0], spacing=format[1], textnv=text)
+        t = str(text)
+        if style == 10:
+            t = t[0].upper() + t[1:]
+        elif style == 11:
+            t = t[0].lower() + t[1:]
+        Text(t).execute()
+    else:
+        textformat.master_format_text(capitalization=format[0], spacing=format[1], textnv=text)
     
     if singing:
         Text(" ").execute()
@@ -127,10 +137,6 @@ class RecursiveRule(CompoundRule):
                 self.process_node(child)
     
     
-class Punctuation(CustomPunctuation):
-    exported = False
-    
-    
 class Alphabet(MappingRule):
     exported = False
     
@@ -148,21 +154,12 @@ class Alphabet(MappingRule):
         "big": False,
     }
     
-class TextFormatting(MappingRule):
-    exported = False
+# Reduced weight for everything other than text formatting to make it more likely 
+# that the first word after text formatting is interpreted verbatim rather than as a command 
+W = 0.001
 
-    mapping = {
-        "<format> <text> [stop]":
-            R(Function(format_text, extra={"text"})),
-        #"<format>":
-            #R(Text("Formatting")),
-    }
-    extras = [
-        Choice("format", format_dict),
-        Dictation("text"),
-    ]
-    
 class Spelling(RecursiveRule):
+    weight = W
     exported = False
     
     spec = "spell <letters>"
@@ -170,18 +167,41 @@ class Spelling(RecursiveRule):
         Repetition(RuleRef(Alphabet()), max=20, name="letters"),
     ]
     
+class Punctuation(CustomPunctuation):
+    weight = W
+    exported = False
+    
+class Numbers(CustomNumbers):
+    weight = W
+    exported = False
+    
+
+class TextFormatting(MappingRule):
+    exported = False
+
+    mapping = {
+        "<format> <text> [stop]":
+            R(Function(format_text, extra={"text"})),
+    }
+    extras = [
+        Choice("format", format_dict),
+        Dictation("text"),
+    ]
+
 class ProgrammingOptions(RecursiveRule):
     exported = False
     
-    spec = "<TextFormatting> | <Spelling> | <Punctuation>"
-    #spec = "<TextFormatting> | <Spelling>"
+    spec = "<TextFormatting> | <Spelling> | <Punctuation> | <Numbers>"
+    
     extras = [
         RuleRef(TextFormatting(), name="TextFormatting"),
         RuleRef(Spelling(), name="Spelling"), 
-        RuleRef(Punctuation(), name="Punctuation")
+        RuleRef(Punctuation(), name="Punctuation"),
+        RuleRef(Numbers(), name="Numbers")
     ]
     
 class CustomProgramming(MappingRule):
+    weight = 3 # Above global and app specific rules
     
     mapping = {
         "<ProgrammingOptions>": ActionBase()
