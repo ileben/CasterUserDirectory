@@ -11,25 +11,32 @@ class CustomMouse(MergeRule):
     mapping = {
         "zoom in|zooming|enhance":
             R(Function(et.zoom)),
-        "(click|kick) <textnv>":
+        "zoom (and) hold":
+            R(Function(et.zoom, hold=True)),
+        "zoom stop":
+            R(Function(et.unzoom)) +
+            R(Function(et.disable_follow_gaze)),
+        "(click|kick|punch) <textnv>":
             R(Function(et.click_text)),
         "touch <textnv>":
             R(Function(et.touch_text)),
+        "debug O C R":
+            R(Function(et.debug_character_recognition)),
         "curse":
-            R(Function(et.follow_gaze, enable=True)),
+            R(Function(et.enable_follow_gaze)),
         "uncurse":
-            R(Function(et.follow_gaze, enable=False)),
-        "push [<nn10>]":
-            R(Function(et.follow_gaze, enable=False))+
-            Mouse("left")*Repeat(extra="nn10"),
+            R(Function(et.disable_follow_gaze)),
         "fly kick [<nn10>]":
             R(Function(et.teleport_cursor))+
             Mouse("left")*Repeat(extra="nn10"),
+        "push [<nn10>]":
+            R(Function(et.stop_zoom_unless_holding))+
+            Mouse("left")*Repeat(extra="nn10"),
         "psychic":
-            R(Function(et.follow_gaze, enable=False))+
+            R(Function(et.stop_zoom_unless_holding))+
             Mouse("right"),
         "double kick":
-            R(Function(et.follow_gaze, enable=False))+
+            R(Function(et.stop_zoom_unless_holding))+
             Mouse("left")*Repeat(2),
         "squat":
             R(Function(et.unzoom))+

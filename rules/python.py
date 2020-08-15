@@ -42,6 +42,10 @@ class CustomPython(MergeRule):
             R(Text("#") + Key("space")),
         SymbolSpecs.LONG_COMMENT:
             R(Text("''''''") + Key("left:3")),
+        "open comment":
+            R(Text("'''")),
+        "close comment":
+            R(Text("'''")),
         (SymbolSpecs.COMMENT_OUT + " [<nnavi50>]"):
             R((Key("end") + Key("home") + Text("#") + Key("down"))*Repeat(extra="nnavi50"), rspec="comment out"),
         (SymbolSpecs.REMOVE_COMMENT + " [<nnavi50>]"):

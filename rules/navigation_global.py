@@ -36,6 +36,10 @@ class CustomNavigationGlobal(MergeRule):
             R(Key("c-home")),
         "down to bottom":
             R(Key("c-end")),
+        "page down [<nn50>]":
+            R(Key("pgdown:%(nn50)s")),
+        "page up [<nn50>]":
+            R(Key("pgup:%(nn50)s")),
             
         "leash [<nn50>]":
             R(Key("c-left:%(nn50)s")),

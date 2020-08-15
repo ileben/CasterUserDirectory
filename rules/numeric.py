@@ -1,6 +1,6 @@
 from imports import *
 
-def numbers2(wnKK, digits):
+def numbers2(wnKK, digits = None):
     Text(str(wnKK)).execute()
     if not digits is None:
         Text(".").execute()

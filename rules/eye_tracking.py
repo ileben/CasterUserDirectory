@@ -51,13 +51,23 @@ def teleport_cursor():
     global d
     d.TeleportCursor()
     
-def zoom():
+def zoom(hold=False):
     global d
-    d.Zoom()
+    global zoomHold
+    zoomHold = hold
+    autoClick = (not zoomHold)
+    d.Zoom(autoClick)
     
 def unzoom():
     global d
     d.Unzoom()
+    
+def stop_zoom_unless_holding():
+    global d
+    global zoomHold
+    if not zoomHold:
+        d.DisableFollowGaze()
+        d.Unzoom()
     
 def click_text(textnv):
     global d
@@ -66,6 +76,10 @@ def click_text(textnv):
 def touch_text(textnv):
     global d
     d.TouchText(ctypes.c_char_p(str(textnv)))
+    
+def debug_character_recognition():
+    global d
+    d.DebugCharacterRecognition()
     
 def get_current_file():
     global d

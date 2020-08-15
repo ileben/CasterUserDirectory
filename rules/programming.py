@@ -154,18 +154,17 @@ class Alphabet(MappingRule):
         "big": False,
     }
     
-# Reduced weight for everything other than text formatting to make it more likely 
-# that the first word after text formatting is interpreted verbatim rather than as a command 
-W = 0.001
-
 class Spelling(RecursiveRule):
-    weight = W
     exported = False
     
     spec = "spell <letters>"
     extras = [
         Repetition(RuleRef(Alphabet()), max=20, name="letters"),
     ]
+    
+# Reduced weight for everything other than text formatting to make it more likely 
+# that the first word after text formatting is interpreted verbatim rather than as a command 
+W = 0.001
     
 class Punctuation(CustomPunctuation):
     weight = W
