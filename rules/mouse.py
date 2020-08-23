@@ -13,7 +13,7 @@ class CustomMouse(MergeRule):
             R(Function(et.zoom)),
         "zoom (and) hold":
             R(Function(et.zoom, hold=True)),
-        "zoom stop":
+        "zoom out":
             R(Function(et.unzoom)) +
             R(Function(et.disable_follow_gaze)),
         "(click|kick|punch) <textnv>":
@@ -26,6 +26,10 @@ class CustomMouse(MergeRule):
             R(Function(et.enable_follow_gaze)),
         "uncurse":
             R(Function(et.disable_follow_gaze)),
+        "drag":
+            R(Function(et.unzoom))+
+            Mouse("left:down")+
+            R(Function(et.begin_drag)),
         "fly kick [<nn10>]":
             R(Function(et.teleport_cursor))+
             Mouse("left")*Repeat(extra="nn10"),

@@ -90,8 +90,6 @@ class CustomCPP(MergeRule):
             R(Text("private ")),
         "static":
             R(Text("static ")),
-        "final":
-            R(Text("final ")),
         "static cast integer":
             R(Text("static_cast<int>()") + Key("left")),
         "static cast double":

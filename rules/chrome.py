@@ -10,11 +10,11 @@ class CustomChrome(MappingRule):
             R(Key("a-left/20")) * Repeat(extra="n"),
         "go forward [<n>]":
             R(Key("a-right/20")) * Repeat(extra="n"),
-        "zoom in [<n>]":
+        "scale up [<n>]":
             R(Key("c-plus/20")) * Repeat(extra="n"),
-        "zoom out [<n>]":
+        "scale down [<n>]":
             R(Key("c-minus/20")) * Repeat(extra="n"),
-        "zoom reset [<n>]":
+        "scale reset [<n>]":
             R(Key("c-0")),
             
         "address bar":

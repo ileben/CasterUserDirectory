@@ -20,7 +20,7 @@ punctuation_dict = {
     "bam":                                                ". ",
     "boom":                                               ", ",
     "questo":                                             "?",
-    "clamor":                                             "!",
+    "exclaim":                                             "!",
     "deckle":                                             ":",
     "semper":                                             ";",
     "underscore":                                         "_",

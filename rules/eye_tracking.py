@@ -47,6 +47,10 @@ def disable_follow_gaze():
     global d
     d.DisableFollowGaze()
     
+def begin_drag():
+    global d
+    d.BeginDrag()
+    
 def teleport_cursor():
     global d
     d.TeleportCursor()
